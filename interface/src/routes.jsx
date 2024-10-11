@@ -1,17 +1,19 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import ProtectedRoute from './components/Rotas/ProtectedRoutes';
 import Home from './pages/Home/Home';
 import Pessoa from './pages/Pessoa/Pessoa';
 import Login from './pages/Login/Login';
-import Logout from './pages/Logout/Logout';
 
 function AppRouter() {
     return (
         <BrowserRouter>
             <Routes>
+                {/* Rotas principais */}
                 <Route path="/" element={<Home />} />
-                <Route path='/pessoas' element={<Pessoa />} />
                 <Route path="/login" element={<Login />} />
-                <Route path="/logout" element={<Logout />} />
+
+                {/* Rotas protegidas */}
+                <Route path='/pessoas' element={<ProtectedRoute element={Pessoa} />} />
             </Routes>
         </BrowserRouter>
     );
